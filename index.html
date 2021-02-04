@@ -6,80 +6,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> rr </title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <style>
-        body {
-            background: black;
-        }
-        video, canvas {
-            position: absolute;
-        }
-        video {
-            border: 2px solid red;
-            box-shadow: 0 0 50px red;
-        }
-    </style>
-
-    <video id="video" width="320" height="240" preload autoplay loop muted></video>
-    <canvas id="canvas" width="625" height="240"></canvas>
+    <h1 id="TxtCarregando"> Carregando </h1>
+    <div id="fundoVideoCanvas">
+        <video id="video" width="320" height="240" preload autoplay loop muted></video>
+        <canvas id="canvas" width="490" height="240"></canvas>
+    </div>
 
     <script src="tracking-min.js"></script>
     <script src="data/face.js"></script>
     <script src="data/eye.js"></script>
-
-    <script>
-
-        function iniciar() {
-
-            const video = window.document.querySelector('#video');
-            const canvas = window.document.querySelector('#canvas');
-            const context = canvas.getContext('2d');
-            
-            const detectarFace = new tracking.ObjectTracker('face');
-            tracking.track('#video', detectarFace, { camera: true });
-
-            detectarFace.on('track', event => {
-                event.data.forEach(dadosDaFace => {
-
-                    if(dadosDaFace.length === 0) {
-
-                        console.log('Nenhum rosto encontrado');
-
-                    } else {
-
-                        console.log(dadosDaFace);
-
-                        context.clearRect(0, 0, canvas.width, canvas.height);
-                    
-                        context.strokeStyle = 'red';
-                        context.lineWidth = 2;
-                        context.shadowColor = 'red';
-                        context.shadowBlur = 9;
-
-                        context.fillText(`X: ${dadosDaFace.x}, Y: ${dadosDaFace.y}`, dadosDaFace.x + dadosDaFace.width + 10, dadosDaFace.y + 20);
-                        context.fillStyle = 'white';
-                        context.font='15px sans-serif';
-
-                        context.fillText(`Width: ${dadosDaFace.width},  Height:${dadosDaFace.height}`, dadosDaFace.x + dadosDaFace.width + 10, dadosDaFace.y + 40);
-                        context.fillStyle = 'white ';
-                        context.font='15px sans-serif';
-
-                        context.strokeRect(dadosDaFace.x, dadosDaFace.y, dadosDaFace.width, dadosDaFace.height);
-
-                    };
-                    
-                });
-
-            });
-
-        };
-  
-        window.load = iniciar();
-
-    </script>
+    <script src="scripts/scripts.js"></script>
     
 </body>
 

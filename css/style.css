@@ -1,0 +1,52 @@
+body {
+    background: black;
+}
+
+#fundoVideoCanvas {
+
+    visibility: hidden;
+    position: relative;
+    width: 500px;
+    margin:  0 auto 0 auto;
+
+}
+
+h1 {
+
+    text-align: center;
+    font-family: sans-serif;
+    color: white;
+    content: "Boschini was here!";
+    animation: 1s infinite n;
+
+}
+
+@keyframes n {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+  }
+
+
+
+
+video, canvas {
+
+    position: absolute;
+    border: 2px solid red;
+    box-shadow: 0 0 50px red;
+
+}
+
+video {
+
+    border: 2px solid red;
+    box-shadow: 0 0 50px red;
+
+}
